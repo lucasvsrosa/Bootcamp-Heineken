@@ -4,6 +4,21 @@ Este repositório contém todo o material e anotações do **Bootcamp Heineken -
 
 ---
 
+## 📬 Meu Contato
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Lucas_Vinicius-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/lucas-vinicius-siqueira-da-rosa)
+
+---
+
+## 🛠️ Tecnologias 
+
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Excel](https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoftexcel&logoColor=white)
+![Copilot](https://img.shields.io/badge/Copilot-FFFFFF?style=for-the-badge&logo=githubcopilot&logoColor=black)
+
+---
+
 ## 🔍 Conteúdo do Bootcamp
 
 ### 📁 Módulo 1 - Introdução a GitHub
@@ -80,4 +95,6 @@ Este repositório contém todo o material e anotações do **Bootcamp Heineken -
 3. Revise os conceitos, execute os projetos e contribua!
 
 ---
+
+
 
