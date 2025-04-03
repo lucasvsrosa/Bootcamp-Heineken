@@ -21,12 +21,12 @@ Aqui estão todos os desafios práticos organizados por módulo, com links diret
 
 | Módulo | Nome do Desafio | Descrição | Link do Arquivo |
 |--------|-----------------|-----------|-----------------|
-| 1️⃣ | [Contribuindo em um Projeto Open Source no GitHub] | Construa um portfólio no GitHub com seus projetos de dados | [-]() |
-| 3️⃣ | [Refinando um projeto Conceitual de Banco de dados - E-commerce] | Crie um diagrama ER completo para loja virtual | [-]() |
-| 3️⃣ | [Construindo um Esquema Conceitual para Banco de dados] | Desenvolva um modelo a partir de requisitos | [-]() |
-| 4️⃣ | [Construa um Projeto Lógico de Banco de Dados do Zero] | Implemente um schema SQL funcional | [-]() |
-| 4️⃣ | [Associando Conceitos de Comandos SQL com Lógica de Programação] | Integre comandos SQL com lógica Python | [-]() |
-| 5️⃣ | [Projeto prático: Criando um dashboard de vendas.] | Construa análise visual no Excel | [-]() |
+| 1️⃣ | Contribuindo em um Projeto Open Source no GitHub | Construa um portfólio no GitHub com seus projetos de dados | [https://github.com/lucasvsrosa/dio-lab-open-source] |
+| 3️⃣ | Refinando um projeto Conceitual de Banco de dados - E-commerce | Crie um diagrama ER completo para loja virtual | [-]() |
+| 3️⃣ | Construindo um Esquema Conceitual para Banco de dados | Desenvolva um modelo a partir de requisitos | [-]() |
+| 4️⃣ | Construa um Projeto Lógico de Banco de Dados do Zero | Implemente um schema SQL funcional | [-]() |
+| 4️⃣ | Associando Conceitos de Comandos SQL com Lógica de Programação | Integre comandos SQL com lógica Python | [-]() |
+| 5️⃣ | Projeto prático: Criando um dashboard de vendas. | Construa análise visual no Excel | [-]() |
 
 ---
 
