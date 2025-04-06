@@ -32,7 +32,7 @@ O desafio tem como objetivo desenvolver um **banco de dados funcional**, seguind
 
 ---
 
-## ⌨️ Entidades Principais
+## 🏛️ Entidades Principais
 
 ### 🧾 Pedido
 - Representa uma solicitação de um cliente.
@@ -56,7 +56,7 @@ O desafio tem como objetivo desenvolver um **banco de dados funcional**, seguind
 
 ---
 
-## 🔗 Relacionamentos
+## 🔗 Relacionamentos do modelo Lógico
 
 ### 📦🧾 Produto - Pedido (N:N)
 - Um produto pode estar presente em vários pedidos.
