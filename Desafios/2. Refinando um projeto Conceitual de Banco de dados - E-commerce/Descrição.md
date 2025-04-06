@@ -42,7 +42,93 @@ Refinar o modelo, acrescentando as regras abaixo:
 
 ---
 
-## 🛠️ Tecnologias Utilizadas  
--  **MySQL** - Banco de Dados Relacional  
--  **Workbench** - Modelagem do Banco de Dados  
--  **Git/GitHub** - Versionamento de Código
+## Modelo usado 
+```python
+-- E-commerce Modelo
+
+CREATE DATABASE ECommerce;
+USE ECommerce;
+
+-- Tabela Cliente
+CREATE TABLE Cliente (
+    idCliente INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45),
+    identificacao VARCHAR(45),
+    endereco VARCHAR(45)
+);
+
+-- Tabela Pedido
+CREATE TABLE Pedido (
+    idPedido INT PRIMARY KEY AUTO_INCREMENT,
+    statusDoPedido VARCHAR(45),
+    descricao VARCHAR(45),
+    frete FLOAT,
+    Cliente_idCliente INT,
+    FOREIGN KEY (Cliente_idCliente) REFERENCES Cliente(idCliente)
+);
+
+-- Tabela Produto
+CREATE TABLE Produto (
+    idProduto INT PRIMARY KEY AUTO_INCREMENT,
+    categoria VARCHAR(45),
+    descricao VARCHAR(45),
+    valor FLOAT
+);
+
+-- Tabela Relacao Produto/Pedido (Muitos para Muitos)
+CREATE TABLE Relacao_Produto_Pedido (
+    Produto_idProduto INT,
+    Pedido_idPedido INT,
+    PRIMARY KEY (Produto_idProduto, Pedido_idPedido),
+    FOREIGN KEY (Produto_idProduto) REFERENCES Produto(idProduto),
+    FOREIGN KEY (Pedido_idPedido) REFERENCES Pedido(idPedido)
+);
+
+-- Tabela Estoque
+CREATE TABLE Estoque (
+    idEstoque INT PRIMARY KEY AUTO_INCREMENT,
+    local VARCHAR(45)
+);
+
+-- Tabela Produto_em_Estoque
+CREATE TABLE Produto_em_Estoque (
+    Estoque_idEstoque INT,
+    Produto_idProduto INT,
+    PRIMARY KEY (Estoque_idEstoque, Produto_idProduto),
+    FOREIGN KEY (Estoque_idEstoque) REFERENCES Estoque(idEstoque),
+    FOREIGN KEY (Produto_idProduto) REFERENCES Produto(idProduto)
+);
+
+-- Tabela Fornecedor
+CREATE TABLE Fornecedor (
+    idFornecedor INT PRIMARY KEY AUTO_INCREMENT,
+    razaoSocial VARCHAR(45),
+    cnpj VARCHAR(45)
+);
+
+-- Tabela Produto_Fornecedor
+CREATE TABLE Produto_Fornecedor (
+    Produto_idProduto INT,
+    Fornecedor_idFornecedor INT,
+    PRIMARY KEY (Produto_idProduto, Fornecedor_idFornecedor),
+    FOREIGN KEY (Produto_idProduto) REFERENCES Produto(idProduto),
+    FOREIGN KEY (Fornecedor_idFornecedor) REFERENCES Fornecedor(idFornecedor)
+);
+
+-- Tabela Vendedor Terceiro
+CREATE TABLE Vendedor_Terceiro (
+    idVendedorTerceiro INT PRIMARY KEY AUTO_INCREMENT,
+    razaoSocial VARCHAR(45),
+    local VARCHAR(45)
+);
+
+-- Tabela Produtos_Vendedores_Terceiros
+CREATE TABLE Produtos_Vendedores_Terceiros (
+    Produto_idProduto INT,
+    Vendedor_Terceiro_idVendedorTerceiro INT,
+    quantidade INT,
+    PRIMARY KEY (Produto_idProduto, Vendedor_Terceiro_idVendedorTerceiro),
+    FOREIGN KEY (Produto_idProduto) REFERENCES Produto(idProduto),
+    FOREIGN KEY (Vendedor_Terceiro_idVendedorTerceiro) REFERENCES Vendedor_Terceiro(idVendedorTerceiro)
+);
+```
