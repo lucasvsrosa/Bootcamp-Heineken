@@ -79,3 +79,4 @@ O desafio tem como objetivo desenvolver um **banco de dados funcional**, seguind
 ## Link
 - [Script E-commerce](https://github.com/lucasvsrosa/Bootcamp-Heineken/blob/main/Desafios/2.%20Refinando%20um%20projeto%20Conceitual%20de%20Banco%20de%20dados%20-%20E-commerce/Script.md) 
 - [Modelo Lógico](https://github.com/lucasvsrosa/Bootcamp-Heineken/blob/main/Desafios/4.%20Construa%20um%20Projeto%20Lógico%20de%20Banco%20de%20Dados%20do%20Zero/modelo%20logico.png)
+- [Perguntas](https://github.com/lucasvsrosa/Bootcamp-Heineken/blob/main/Desafios/4.%20Construa%20um%20Projeto%20Lógico%20de%20Banco%20de%20Dados%20do%20Zero/Perguntas.md)
