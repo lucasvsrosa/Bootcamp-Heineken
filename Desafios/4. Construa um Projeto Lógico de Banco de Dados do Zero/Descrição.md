@@ -31,3 +31,47 @@ O desafio tem como objetivo desenvolver um **banco de dados funcional**, seguind
    - Criar um repositório contendo o código SQL e a documentação do projeto.  
 
 ---
+
+## ⌨️ Entidades Principais
+
+### 🧾 Pedido
+- Representa uma solicitação de um cliente.
+- Atributos principais: `id_pedido`, `id_cliente`, `data_pedido`.
+
+### 👤 Cliente
+- Armazena os dados dos clientes que realizam pedidos.
+- Atributos principais: `id_cliente`, `nome_cliente`, `email_cliente`.
+
+### 📦 Produto
+- Representa os itens disponíveis para venda.
+- Atributos principais: `id_produto`, `nome_produto`, `preco`.
+
+### 🏪 Estoque
+- Representa os locais e quantidades disponíveis de cada produto.
+- Atributos principais: `id_estoque`, `id_produto`, `quantidade`.
+
+### 🏭 Fornecedor
+- Representa os fornecedores que fornecem os produtos.
+- Atributos principais: `id_fornecedor`, `nome_fornecedor`, `contato`.
+
+---
+
+## 🔗 Relacionamentos
+
+### 📦🧾 Produto - Pedido (N:N)
+- Um produto pode estar presente em vários pedidos.
+- Um pedido pode conter vários produtos.
+- Implementado pela tabela `Relacao_Produto_Pedido` com os campos `id_produto`, `id_pedido` e `quantidade`.
+
+### 📦🏭 Produto - Fornecedor (N:N)
+- Um produto pode ser fornecido por vários fornecedores.
+- Um fornecedor pode fornecer vários produtos.
+- Implementado pela tabela `Produto_Fornecedor` com os campos `id_produto` e `id_fornecedor`.
+
+### 📦🏪 Produto - Estoque (1:N)
+- Um produto pode estar associado a vários registros de estoque.
+- Cada registro de estoque está vinculado a apenas um produto.
+
+### 🧾👤 Pedido - Cliente (N:1)
+- Um cliente pode realizar vários pedidos.
+- Cada pedido pertence a apenas um cliente.
