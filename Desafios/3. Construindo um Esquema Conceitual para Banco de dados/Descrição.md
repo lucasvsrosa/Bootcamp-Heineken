@@ -1,5 +1,7 @@
 # 🚗 Oficina Mecânica - Controle de Ordens de Serviço
 
+Este projeto consiste no modelo conceitual de um banco de dados para um sistema de uma Oficina Mecânica, garantindo um controle eficiente sobre os serviços prestados pela oficina, organizando o fluxo desde a chegada do veículo até a conclusão e pagamento do serviço. 
+
 ## 📌 Objetivo
 
 Desenvolver um esquema conceitual para um sistema que permita:
