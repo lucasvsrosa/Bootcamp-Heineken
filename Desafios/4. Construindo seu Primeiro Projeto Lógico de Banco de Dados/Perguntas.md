@@ -1,4 +1,4 @@
-# Perguntas - Queries Complexas
+# 🔍 Consultas SQL - Queries Complexas
 
 ## 1. Quantos pedidos foram feitos por cada cliente?
 ```sql
