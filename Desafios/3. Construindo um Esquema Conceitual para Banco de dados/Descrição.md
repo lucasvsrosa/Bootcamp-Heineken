@@ -61,4 +61,23 @@ O orçamento é gerado a partir da OS para definir o custo total dos serviços e
 
 ---
 
+# 🔄 Fluxo Completo do Processo da Oficina
+1. O cliente chega à oficina e solicita um serviço.  
+2. O atendente registra os dados do cliente e abre uma Ordem de Serviço (OS).  
+3. A OS é criada com data de emissão, status e previsão de conclusão.  
+4. O cliente informa o problema ou tipo de serviço desejado.  
+5. Uma equipe é designada para analisar o veículo e confirmar os serviços necessários.  
+6. Os serviços são registrados na OS e associados à equipe responsável.  
+7. Se os serviços exigirem peças:  
+   a. O sistema verifica se há peças no estoque.  
+   b. Se não houver, realiza-se a compra via fornecedor.  
+8. As peças utilizadas são registradas, com origem e valores.  
+9. O valor da OS é calculado com base:  
+   a. Nos serviços realizados (tabela de mão de obra).  
+   b. Nas peças utilizadas (estoque ou fornecedor).  
+10. O cliente autoriza a execução e o serviço é realizado.  
+11. Após a conclusão, o cliente efetua o pagamento.  
+12. O sistema registra o pagamento e encerra a OS.
+
+
 Essa estrutura garante um controle eficiente sobre os serviços prestados pela oficina, organizando o fluxo desde a chegada do veículo até a conclusão do serviço. 🚗🔧✨  
