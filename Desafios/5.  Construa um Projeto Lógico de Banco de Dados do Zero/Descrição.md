@@ -120,6 +120,6 @@ O desafio foi estruturado com os seguintes objetivos:
 
 ## 🔗 Links (exemplo)
 
-- [Script Oficina de Carro]()
-- [Perguntas]()
+- [Script Oficina de Carro](https://github.com/lucasvsrosa/Bootcamp-Heineken/blob/main/Desafios/3.%20Construindo%20um%20Esquema%20Conceitual%20para%20Banco%20de%20dados/Script.md)
+- [Perguntas](https://github.com/lucasvsrosa/Bootcamp-Heineken/blob/main/Desafios/5.%20%20Construa%20um%20Projeto%20L%C3%B3gico%20de%20Banco%20de%20Dados%20do%20Zero/Perguntas.md)
 - [Modelo Lógico]()
