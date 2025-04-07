@@ -6,7 +6,7 @@ Este arquivo contém os scripts corretos para o desafio
 
 ``` sql
 -- E-commerce Refinado
-CREATE DATABASE ECommerce;
+CREATE DATABASE IF NOT EXISTS ECommerce;
 USE ECommerce;
 
 -- Tabela Cliente
@@ -24,15 +24,6 @@ CREATE TABLE Cliente (
     )
 );
 
--- Tabela Pagamento
-CREATE TABLE Pagamento (
-    id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
-    tipo_pagamento ENUM('Cartão de Crédito', 'Cartão de Débito', 'Boleto', 'Pix') NOT NULL,
-    dados_pagamento VARCHAR(255) NOT NULL,
-    id_cliente INT NOT NULL,
-    FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente) ON DELETE CASCADE
-);
-
 -- Tabela Pedido
 CREATE TABLE Pedido (
     id_pedido INT PRIMARY KEY AUTO_INCREMENT,
@@ -41,6 +32,15 @@ CREATE TABLE Pedido (
     frete DECIMAL(10,2) NOT NULL,
     id_cliente INT NOT NULL,
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente) ON DELETE CASCADE
+);
+
+-- Tabela Pagamento (revisada)
+CREATE TABLE Pagamento (
+    id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
+    tipo_pagamento ENUM('Cartão de Crédito', 'Cartão de Débito', 'Boleto', 'Pix') NOT NULL,
+    dados_pagamento VARCHAR(255) NOT NULL,
+    id_pedido INT NOT NULL UNIQUE,
+    FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido) ON DELETE CASCADE
 );
 
 -- Tabela Entrega
