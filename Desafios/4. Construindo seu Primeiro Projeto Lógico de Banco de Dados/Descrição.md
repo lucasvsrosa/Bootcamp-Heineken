@@ -1,80 +1,103 @@
-
-# Desafio - Modelagem e Implementação de Banco de Dados para Oficina
+# Desafio - Modelagem e Implementação de Banco de Dados para E-commerce
 
 ## 📌 Descrição do Desafio
 
-Neste desafio, o objetivo é criar um **banco de dados relacional** para gerenciar as operações de uma oficina mecânica. O projeto envolve desde a modelagem lógica até a implementação em SQL, incluindo a criação de tabelas, inserção de dados e elaboração de consultas SQL complexas.
+Este desafio consiste na criação de um **banco de dados relacional** para um sistema de **e-commerce** completo. O objetivo é realizar a modelagem e a implementação de todas as tabelas necessárias para controlar clientes, pedidos, pagamentos, entregas, produtos, fornecedores, vendedores terceiros e estoque.
 
-O projeto deve abranger as principais entidades da oficina, como **clientes, veículos, ordens de serviço, serviços prestados e funcionários**. Além disso, é necessário incluir consultas SQL que realizem **recuperação de dados, filtros, junções, ordenações e cálculos de atributos derivados**.
+A modelagem considera a existência de clientes **Pessoa Física (PF)** e **Pessoa Jurídica (PJ)**, com campos e validações específicas para CPF e CNPJ, além de integrar os pedidos a suas respectivas entregas, pagamentos e produtos adquiridos. Também são levadas em consideração as relações com fornecedores e vendedores terceiros, enriquecendo o cenário de um e-commerce realista.
 
 ---
 
 ## 🎯 Objetivo
 
-O desafio tem como objetivo desenvolver um **banco de dados funcional**, seguindo as boas práticas de modelagem e otimização de consultas. Para isso, as seguintes etapas devem ser cumpridas:
+Desenvolver um **banco de dados robusto e funcional**, utilizando boas práticas de modelagem relacional, integridade referencial e normalização. O projeto inclui:
 
 1. **Modelagem Relacional**  
-   - Definir tabelas, chaves primárias e estrangeiras.  
-   - Criar relacionamentos entre as entidades do banco de dados.  
+   - Definição das entidades, atributos e relacionamentos.  
+   - Chaves primárias e estrangeiras corretamente aplicadas.  
 
 2. **Criação do Banco de Dados**  
-   - Escrever um script SQL para criação do banco e suas tabelas.  
-   - Garantir integridade referencial entre os dados.  
+   - Script SQL completo para a criação das tabelas.  
+   - Uso de `ENUM`, `CHECK`, `UNIQUE` e `ON DELETE CASCADE`.  
 
-3. **Inserção de Dados**  
-   - Popular as tabelas com informações fictícias para testes.  
+3. **Relacionamentos Complexos**  
+   - Implementação de relacionamentos N:N e 1:N com tabelas associativas.  
 
-4. **Consultas SQL Avançadas**  
-   - Consultas com `SELECT`, `WHERE`, `ORDER BY`, `HAVING`, `JOIN` e cálculos de atributos derivados.  
-
-5. **Publicação no GitHub**  
-   - Criar um repositório contendo o código SQL e a documentação do projeto.  
+4. **Cenário Realista**  
+   - Diferença entre cliente PF e PJ.  
+   - Gestão de estoque e múltiplos fornecedores.  
+   - Suporte a vendedores terceiros.  
 
 ---
 
 ## 🏛️ Entidades Principais
 
-### 🧾 Pedido
-- Representa uma solicitação de um cliente.
-- Atributos principais: `id_pedido`, `id_cliente`, `data_pedido`.
-
 ### 👤 Cliente
-- Armazena os dados dos clientes que realizam pedidos.
-- Atributos principais: `id_cliente`, `nome_cliente`, `email_cliente`.
+- Armazena os dados dos clientes, podendo ser pessoa física ou jurídica.
+- Atributos principais: `id_cliente`, `nome`, `tipo (PF/PJ)`, `cpf`, `cnpj`, `identificacao`, `endereco`.
+
+### 🧾 Pedido
+- Representa os pedidos feitos pelos clientes.
+- Atributos principais: `id_pedido`, `status_pedido`, `descricao`, `frete`, `id_cliente`.
+
+### 💳 Pagamento
+- Registra os pagamentos dos pedidos.
+- Atributos principais: `id_pagamento`, `tipo_pagamento`, `dados_pagamento`, `id_pedido`.
+
+### 🚚 Entrega
+- Controla o status e rastreio da entrega dos pedidos.
+- Atributos principais: `id_entrega`, `id_pedido`, `status_entrega`, `codigo_rastreio`.
 
 ### 📦 Produto
-- Representa os itens disponíveis para venda.
-- Atributos principais: `id_produto`, `nome_produto`, `preco`.
+- Itens disponíveis para venda.
+- Atributos principais: `id_produto`, `categoria`, `descricao`, `valor`.
 
 ### 🏪 Estoque
-- Representa os locais e quantidades disponíveis de cada produto.
-- Atributos principais: `id_estoque`, `id_produto`, `quantidade`.
+- Local onde os produtos estão armazenados.
+- Atributos principais: `id_estoque`, `localizacao`.
 
 ### 🏭 Fornecedor
-- Representa os fornecedores que fornecem os produtos.
-- Atributos principais: `id_fornecedor`, `nome_fornecedor`, `contato`.
+- Empresas fornecedoras dos produtos.
+- Atributos principais: `id_fornecedor`, `razao_social`, `cnpj`.
+
+### 🛍️ Vendedor Terceiro
+- Vendedores que comercializam seus produtos na plataforma.
+- Atributos principais: `id_vendedor_terceiro`, `razao_social`, `localizacao`.
 
 ---
 
-## 🔗 Relacionamentos do modelo Lógico
+## 🔗 Relacionamentos do Modelo Lógico
 
 ### 📦🧾 Produto - Pedido (N:N)
-- Um produto pode estar presente em vários pedidos.
 - Um pedido pode conter vários produtos.
-- Implementado pela tabela `Relacao_Produto_Pedido` com os campos `id_produto`, `id_pedido` e `quantidade`.
+- Um produto pode estar em vários pedidos.
+- Tabela associativa: `Relacao_Produto_Pedido (id_produto, id_pedido, quantidade)`.
 
 ### 📦🏭 Produto - Fornecedor (N:N)
-- Um produto pode ser fornecido por vários fornecedores.
-- Um fornecedor pode fornecer vários produtos.
-- Implementado pela tabela `Produto_Fornecedor` com os campos `id_produto` e `id_fornecedor`.
+- Produtos podem ter múltiplos fornecedores.
+- Um fornecedor fornece vários produtos.
+- Tabela associativa: `Produto_Fornecedor (id_produto, id_fornecedor)`.
 
-### 📦🏪 Produto - Estoque (1:N)
-- Um produto pode estar associado a vários registros de estoque.
-- Cada registro de estoque está vinculado a apenas um produto.
+### 📦🏪 Produto - Estoque (N:N)
+- Produtos estão associados a diferentes estoques.
+- Tabela associativa: `Produto_em_Estoque (id_estoque, id_produto, quantidade)`.
+
+### 📦🛍️ Produto - Vendedor Terceiro (N:N)
+- Produtos vendidos por terceiros.
+- Tabela associativa: `Produtos_Vendedores_Terceiros (id_produto, id_vendedor_terceiro, quantidade)`.
 
 ### 🧾👤 Pedido - Cliente (N:1)
+- Cada pedido pertence a um único cliente.
 - Um cliente pode realizar vários pedidos.
-- Cada pedido pertence a apenas um cliente.
+
+### 💳🧾 Pagamento - Pedido (1:1)
+- Cada pedido possui um único pagamento.
+- Pagamento está vinculado diretamente ao pedido.
+
+### 🚚🧾 Entrega - Pedido (1:1)
+- Cada pedido possui uma entrega associada.
+
+---
 
 ## Link
 - [Script E-commerce](https://github.com/lucasvsrosa/Bootcamp-Heineken/blob/main/Desafios/2.%20Refinando%20um%20projeto%20Conceitual%20de%20Banco%20de%20dados%20-%20E-commerce/Script.md) 
