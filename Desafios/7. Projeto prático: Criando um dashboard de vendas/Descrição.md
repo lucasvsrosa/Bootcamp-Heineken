@@ -56,4 +56,25 @@ Para uma análise personalizada, o dashboard permite aplicar os seguintes **filt
 - 📅 Start Date  
 - 🔁 Auto Renewal  
 - 📦 Plan  
-- 📂 Subscription Type  
+- 📂 Subscription Type
+
+---
+
+## 🗂️ Dicionário de Dados
+
+| Coluna                       | Descrição                                                                 |
+|-----------------------------|---------------------------------------------------------------------------|
+| `Subscriber ID`             | Identificador único de cada assinante                                    |
+| `Name`                      | Nome do assinante                                                        |
+| `Plan`                      | Plano de assinatura adquirido (Ex: Gold, Ultimate, etc.)                 |
+| `Start Date`                | Data de início da assinatura                                             |
+| `Auto Renewal`              | Indica se a renovação automática está ativada (Sim ou Não)               |
+| `Subscription Price`        | Valor pago pela assinatura principal                                     |
+| `Subscription Type`        | Tipo da assinatura (Ex: Mensal, Anual, etc.)                             |
+| `EA Play Season Pass`       | Indica se o assinante comprou o passe de temporada do EA Play (Sim ou Não) |
+| `EA Play Season Pass Price` | Valor pago pelo passe de temporada do EA Play                            |
+| `Minecraft Season Pass`     | Indica se o assinante comprou o passe de temporada do Minecraft (Sim ou Não) |
+| `Minecraft Season Pass Price` | Valor pago pelo passe de temporada do Minecraft                        |
+| `Coupon Value`              | Valor de desconto aplicado por cupom                                     |
+| `Total Value`               | Valor total gasto pelo assinante após desconto (assinatura + passes)     |
+
