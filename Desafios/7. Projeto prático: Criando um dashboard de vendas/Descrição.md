@@ -1,4 +1,4 @@
-# 📊 Dashboard de Assinaturas e Vendas XBOX – Desafio
+# 🎮 Xbox - Dashboard de Assinaturas e Vendas
 
 ## 🏆 Objetivo  
 O objetivo deste desafio é criar um **dashboard de vendas com foco em assinaturas** utilizando o Excel, transformando dados brutos em informações visuais claras, organizadas e estratégicas. O intuito é facilitar a **análise de desempenho das assinaturas**, ajudando gestores e diretores a tomarem **decisões baseadas em dados**.
