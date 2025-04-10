@@ -18,38 +18,44 @@ Com base na base de dados disponibilizada, é possível analisar:
 - 🔍 **Análise por tipo e valor de plano**
 
 ---
+## 🗂️ Abas do Arquivo Excel
 
-## 📊 O que o Dashboard Contém
+### 📁 Aba: `Assets`
+Esta aba reúne os elementos visuais utilizados no dashboard, como:
+
+- Ícones (ex: calendário, carrinho, dinheiro, seta, etc.)
+- Cores e estilos para padronização visual
+- Legendas ou imagens auxiliares
+
+### 📊 Aba: `Dashboard`
 
 O dashboard foi estruturado em **múltiplas abas**, cada uma com um foco estratégico:
 
-### 1. **📌 Visão Geral**
+#### 1. **📌 Visão Geral**
 - Receita total
 - Quantidade de assinantes
 - Ticket médio
 - Receita por tipo de assinatura
 - Filtros: Start Date, Auto Renewal, Plan, Subscription Type
 
-### 2. **📈 Performance Comercial**
+#### 2. **📈 Performance Comercial**
 - Receita por plano
 - Análise do uso de cupons
 - Participação de Season Pass (EA e Minecraft)
 - Receita com/sem desconto
 
-### 3. **👤 Perfil dos Assinantes**
+#### 3. **👤 Perfil dos Assinantes**
 - Comportamento de renovação automática
 - Distribuição dos planos
 - Adesão a benefícios extras (Season Pass)
 - Comparativo entre assinaturas mensais e anuais
 
-### 4. **💸 Descontos e Impacto Financeiro**
+#### 4. **💸 Descontos e Impacto Financeiro**
 - Quantidade de cupons utilizados
 - Comparativo de receita com e sem cupons
 - Avaliação se os cupons estão reduzindo excessivamente a margem de lucro
 
----
-
-## 🔎 Filtros Interativos
+#### OBS: **🔎 Filtros Interativos**
 
 Para uma análise personalizada, o dashboard permite aplicar os seguintes **filtros dinâmicos**:
 
@@ -58,9 +64,10 @@ Para uma análise personalizada, o dashboard permite aplicar os seguintes **filt
 - 📦 Plan  
 - 📂 Subscription Type
 
----
+### 🏦 Aba: `Bases`
+Esta é a aba principal com os dados brutos de assinaturas, que foram utilizados para construir o dashboard.
 
-## 🗂️ Dicionário de Dados
+#### 🗂️ Dicionário de Dados
 
 | Coluna                       | Descrição                                                                 |
 |-----------------------------|---------------------------------------------------------------------------|
@@ -78,3 +85,16 @@ Para uma análise personalizada, o dashboard permite aplicar os seguintes **filt
 | `Coupon Value`              | Valor de desconto aplicado por cupom                                     |
 | `Total Value`               | Valor total gasto pelo assinante após desconto (assinatura + passes)     |
 
+
+### 🧮 Aba: Cálculos
+Esta aba concentra todas as colunas auxiliares e fórmulas criadas para análise e visualização no dashboard.
+
+#### 📌 Principais colunas calculadas:
+
+- `Ano-Mês:` usada para agrupar assinaturas por mês (extraída do Start Date)
+- `Valor Bruto:` soma de Subscription Price + EA Play + Minecraft
+- `Ticket Médio:` cálculo do valor médio por assinante
+- `Com Cupom / Sem Cupom:` para comparar o impacto do uso de cupons no faturamento
+- `Faturamento Total:` total pago sem descontos
+- `Faturamento Real:` total pago com descontos aplicados
+- `% Renovação:` percentual de renovação automática por plano ou tipo
