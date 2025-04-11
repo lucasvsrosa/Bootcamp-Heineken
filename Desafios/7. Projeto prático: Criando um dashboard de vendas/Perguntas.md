@@ -9,15 +9,21 @@ Este painel responde perguntas estratégicas utilizando os nomes reais das colun
 
 ### 📅 Qual a evolução das assinaturas ao longo do tempo?
 - **Campo:** `Start Date`
-- **Ação:** Agrupar por mês e contar `Subscriber ID`
+- **Tabela Dinâmica:**
+  - **Linhas:** `Start Date` (agrupado por mês/ano)
+  - **Valores:** Contagem de `Subscriber ID`
 
 ### 💰 Qual o faturamento total considerando todos os produtos?
 - **Campo:** `Total Value`
-- **Ação:** Soma total
+- **Tabela Dinâmica:**
+  - **Valores:** Soma de `Total Value`
 
 ### 🧍‍♂️ Qual o ticket médio por assinante?
 - **Campo:** `Total Value`
-- **Cálculo:** Soma de `Total Value` / Distintos `Subscriber ID`
+- **Tabela Dinâmica:**
+  - **Valores:** Soma de `Total Value`
+  - **Linhas:** `Subscriber ID`
+  - **Resultado Final:** Criar campo calculado fora da Tabela Dinâmica com fórmula: `=Soma_Total / Qtde_Assinantes_Unicos`
 
 ---
 
@@ -26,19 +32,29 @@ Este painel responde perguntas estratégicas utilizando os nomes reais das colun
 
 ### 🛍️ Quais planos são os mais vendidos?
 - **Campo:** `Plan`
-- **Ação:** Contar frequência de cada plano
+- **Tabela Dinâmica:**
+  - **Linhas:** `Plan`
+  - **Valores:** Contagem de `Subscriber ID`
 
 ### 🗃️ Qual tipo de plano gera mais receita?
-- **Campo:** `Subscription Type`
-- **Ação:** Soma de `Subscription Price` por tipo
+- **Campos:** `Subscription Type`, `Subscription Price`
+- **Tabela Dinâmica:**
+  - **Linhas:** `Subscription Type`
+  - **Valores:** Soma de `Subscription Price`
 
 ### 🔁 Qual a taxa de renovação automática por plano?
 - **Campos:** `Auto Renewal`, `Plan`
-- **Ação:** Calcular percentual de "Sim" em `Auto Renewal` por `Plan`
+- **Tabela Dinâmica:**
+  - **Linhas:** `Plan`
+  - **Colunas:** `Auto Renewal`
+  - **Valores:** Contagem de `Subscriber ID`
+  - **Resultado Final:** Calcular % de "Sim" com fórmula fora da Tabela Dinâmica
 
 ### 📈 Qual a tendência de vendas nos últimos meses?
-- **Campo:** `Start Date`
-- **Ação:** Agrupar por mês e contar `Subscriber ID` ou soma de `Subscription Price`
+- **Campos:** `Start Date`, `Subscription Price`
+- **Tabela Dinâmica:**
+  - **Linhas:** `Start Date` (agrupado por mês/ano)
+  - **Valores:** Soma de `Subscription Price` ou contagem de `Subscriber ID`
 
 ---
 
@@ -47,19 +63,32 @@ Este painel responde perguntas estratégicas utilizando os nomes reais das colun
 
 ### 🧍‍♂️ Qual o ticket médio por assinante?
 - **Campo:** `Total Value`
-- **Cálculo:** Soma de `Total Value` / Distintos `Subscriber ID`
+- **Tabela Dinâmica:**
+  - **Linhas:** `Subscriber ID`
+  - **Valores:** Soma de `Total Value`
+  - **Resultado Final:** Média dos valores gerados por assinante
 
 ### 📅 Qual a evolução das assinaturas ao longo do tempo?
 - **Campo:** `Start Date`
-- **Ação:** Agrupar por mês e contar `Subscriber ID`
+- **Tabela Dinâmica:**
+  - **Linhas:** `Start Date` (agrupado por mês/ano)
+  - **Valores:** Contagem de `Subscriber ID`
 
 ### 🎮 Quais produtos adicionais são mais comprados (EA Play / Minecraft)?
 - **Campos:** `EA Play Season Pass`, `Minecraft Season Pass`
-- **Ação:** Contar quantos "Sim" por campo
+- **Tabela Dinâmica (1):**
+  - **Linhas:** `EA Play Season Pass`
+  - **Valores:** Contagem de `Subscriber ID`
+- **Tabela Dinâmica (2):**
+  - **Linhas:** `Minecraft Season Pass`
+  - **Valores:** Contagem de `Subscriber ID`
 
 ### 🔁 Qual a taxa de renovação automática por plano?
 - **Campos:** `Auto Renewal`, `Plan`
-- **Ação:** Proporção de "Sim" por plano
+- **Tabela Dinâmica:**
+  - **Linhas:** `Plan`
+  - **Colunas:** `Auto Renewal`
+  - **Valores:** Contagem de `Subscriber ID`
 
 ---
 
@@ -68,13 +97,23 @@ Este painel responde perguntas estratégicas utilizando os nomes reais das colun
 
 ### 🧾 Qual o impacto dos cupons de desconto no faturamento?
 - **Campos:** `Coupon Value`, `Total Value`
-- **Cálculo:** Soma de `Coupon Value` / Soma de `Total Value`
+- **Tabela Dinâmica:**
+  - **Valores:** Soma de `Coupon Value`, Soma de `Total Value`
+  - **Resultado Final:** Fora da tabela, calcular percentual: `Soma_Coupon_Value / Soma_Total_Value`
 
 ### 💡 Qual a diferença de receita entre usuários que usaram e não usaram cupom?
 - **Campo:** `Coupon Value`
-- **Filtro:** `= 0` (sem cupom) e `> 0` (com cupom)
-- **Cálculo:** Soma de `Total Value` em cada grupo
+- **Tabela Dinâmica:**
+  - **Linhas:** `Subscriber ID`
+  - **Valores:** Soma de `Total Value`
+  - **Filtro:** `Coupon Value` igual a 0 (sem cupom) e maior que 0 (com cupom)
+  - **Comparação:** Separar os dois grupos e comparar receitas
 
 ### 🎟️ Análise de produtos adicionais como passes
 - **Campos:** `EA Play Season Pass`, `EA Play Season Pass Price`, `Minecraft Season Pass`, `Minecraft Season Pass Price`
-- **Ação:** Contar os "Sim" e somar os respectivos valores
+- **Tabela Dinâmica 1:**
+  - **Linhas:** `EA Play Season Pass`
+  - **Valores:** Soma de `EA Play Season Pass Price`
+- **Tabela Dinâmica 2:**
+  - **Linhas:** `Minecraft Season Pass`
+  - **Valores:** Soma de `Minecraft Season Pass Price`
