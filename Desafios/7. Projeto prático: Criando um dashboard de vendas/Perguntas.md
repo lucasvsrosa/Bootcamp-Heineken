@@ -102,11 +102,11 @@ Este painel responde perguntas estratégicas utilizando os nomes reais das colun
   - **Resultado Final:** Fora da tabela, calcular percentual: `Coupon_Value / Total_Value`
 
 ### 💡 Qual a diferença de receita entre usuários que usaram e não usaram cupom?
-- **Campo:** `Coupon Value`
+- **Campo:** `Usa Cupom`, `Subscriber ID`, `Total Value`
 - **Tabela Dinâmica:**
   - **Linhas:** `Subscriber ID`
   - **Valores:** Soma de `Total Value`
-  - **Filtro:** `Coupon Value` igual a 0 (sem cupom) e maior que 0 (com cupom)
+  - **Filtro:** `CUsa Cupom` igual a 0 (sem cupom) e maior que 0 (com cupom)
   - **Comparação:** Separar os dois grupos e comparar receitas
 
 ### 🎟️ Análise de produtos adicionais como passes
