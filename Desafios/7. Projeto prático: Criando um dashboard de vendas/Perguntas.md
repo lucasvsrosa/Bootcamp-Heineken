@@ -1,98 +1,80 @@
 # ❓ Perguntas de Negócio
 
-Este painel foi dividido em quatro blocos principais para responder perguntas estratégicas sobre assinaturas, desempenho comercial, perfil dos assinantes e impacto de cupons/passes.
+Este painel responde perguntas estratégicas utilizando os nomes reais das colunas da base de dados. Os dados estão organizados em blocos temáticos com base nas perguntas de negócio.
 
 ---
 
 ## 🧭 1. Dashboard  
 **Visão geral com indicadores principais e gráficos resumo**
 
-### Perguntas Respondidas:
-- 📅 **Qual a evolução das assinaturas ao longo do tempo?**
-  - Campo: `Date` agrupado por mês
-  - Valor: `Contagem de Subscriber ID`
-  - Gráfico: Linha/Coluna mostrando crescimento
+### 📅 Qual a evolução das assinaturas ao longo do tempo?
+- **Campo:** `Start Date`
+- **Ação:** Agrupar por mês e contar `Subscriber ID`
 
-- 💰 **Qual o faturamento total considerando todos os produtos?**
-  - Campo: `Price`
-  - Valor: `Soma de Price`
-  - Exibir em cartão de KPI
+### 💰 Qual o faturamento total considerando todos os produtos?
+- **Campo:** `Total Value`
+- **Ação:** Soma total
 
-- 🧍‍♂️ **Qual o ticket médio por assinante?**
-  - Fórmula: `Soma de Price / Contagem de Subscriber ID`
-  - Exibir em cartão
-
-- 🛍️ **Quais planos são os mais vendidos?**
-  - Campo: `Product Name`
-  - Valor: `Contagem`
-  - Exibir o top 5 em gráfico de barras/pizza
-
-- 🎮 **Quais produtos adicionais são mais comprados (EA Play / Minecraft)?**
-  - Campo: `Product Name`
-  - Filtro: apenas “EA Play”, “Minecraft”
-  - Valor: `Contagem` ou `Soma de Price`
+### 🧍‍♂️ Qual o ticket médio por assinante?
+- **Campo:** `Total Value`
+- **Cálculo:** Soma de `Total Value` / Distintos `Subscriber ID`
 
 ---
 
 ## 📊 2. Performance Comercial  
 **Análise dos planos, tipos de assinaturas e faturamento**
 
-### Perguntas Respondidas:
-- 🛍️ **Quais planos são os mais vendidos?**
-  - Campo: `Product Name`
-  - Valor: `Contagem`
-  - Pode segmentar por `Subscription Type`
+### 🛍️ Quais planos são os mais vendidos?
+- **Campo:** `Plan`
+- **Ação:** Contar frequência de cada plano
 
-- 🗃️ **Qual tipo de plano gera mais receita?**
-  - Campo: `Subscription Type` ou `Product Name`
-  - Valor: `Soma de Price`
+### 🗃️ Qual tipo de plano gera mais receita?
+- **Campo:** `Subscription Type`
+- **Ação:** Soma de `Subscription Price` por tipo
 
-- 🔁 **Qual a taxa de renovação automática por plano?**
-  - Linhas: `Auto Renew` (Yes/No)
-  - Colunas: `Product Name`
-  - Valores: `Contagem de Assinaturas` (mostrar como % por coluna)
+### 🔁 Qual a taxa de renovação automática por plano?
+- **Campos:** `Auto Renewal`, `Plan`
+- **Ação:** Calcular percentual de "Sim" em `Auto Renewal` por `Plan`
 
-- 📈 **Qual a tendência de vendas nos últimos meses?**
-  - Campo: `Date` agrupado por mês
-  - Valor: `Contagem de Product Name` ou `Subscriber ID`
+### 📈 Qual a tendência de vendas nos últimos meses?
+- **Campo:** `Start Date`
+- **Ação:** Agrupar por mês e contar `Subscriber ID` ou soma de `Subscription Price`
 
 ---
 
 ## 🧑‍💼 3. Perfil dos Assinantes  
 **Quem são os clientes e como se comportam**
 
-### Perguntas Respondidas:
-- 🧍‍♂️ **Qual o ticket médio por assinante?**
-  - Fórmula: `Soma de Price / Contagem de Subscriber ID`
-  - Exibir em cartão
+### 🧍‍♂️ Qual o ticket médio por assinante?
+- **Campo:** `Total Value`
+- **Cálculo:** Soma de `Total Value` / Distintos `Subscriber ID`
 
-- 📅 **Qual a evolução das assinaturas ao longo do tempo?**
-  - Campo: `Date` por mês + `Subscriber ID`
-  - Gráfico de linha/coluna com contagem
+### 📅 Qual a evolução das assinaturas ao longo do tempo?
+- **Campo:** `Start Date`
+- **Ação:** Agrupar por mês e contar `Subscriber ID`
 
-- 🎮 **Quais produtos adicionais são mais comprados (EA Play / Minecraft)?**
-  - Campo: `Product Name` filtrando “EA Play”, “Minecraft”
-  - Valor: `Contagem` ou `Soma de Price`
+### 🎮 Quais produtos adicionais são mais comprados (EA Play / Minecraft)?
+- **Campos:** `EA Play Season Pass`, `Minecraft Season Pass`
+- **Ação:** Contar quantos "Sim" por campo
 
-- 🔄 **Qual a taxa de renovação automática por plano?**
-  - Campo: `Auto Renew` + `Product Name`
-  - Mostrar % por plano
+### 🔁 Qual a taxa de renovação automática por plano?
+- **Campos:** `Auto Renewal`, `Plan`
+- **Ação:** Proporção de "Sim" por plano
 
 ---
 
 ## 🧾 4. Análise Descontos e Passes  
 **Impacto dos cupons e passes extras no faturamento**
 
-### Perguntas Respondidas:
-- 🧾 **Qual o impacto dos cupons de desconto no faturamento?**
-  - Campo: `Coupon Value`
-  - Cálculo: `Soma de Coupon Value / Soma de Price`
+### 🧾 Qual o impacto dos cupons de desconto no faturamento?
+- **Campos:** `Coupon Value`, `Total Value`
+- **Cálculo:** Soma de `Coupon Value` / Soma de `Total Value`
 
-- 💡 **Qual a diferença de receita entre usuários que usaram e não usaram cupom?**
-  - Filtro: `Coupon Value > 0` e `Coupon Value = 0`
-  - Campo: `Price` → `Soma`
-  - Gráfico comparativo
+### 💡 Qual a diferença de receita entre usuários que usaram e não usaram cupom?
+- **Campo:** `Coupon Value`
+- **Filtro:** `= 0` (sem cupom) e `> 0` (com cupom)
+- **Cálculo:** Soma de `Total Value` em cada grupo
 
-- 🎟️ **Produtos adicionais comprados (como passes)**
-  - Campo: `Product Name` com palavras como “Passe”
-  - Valor: `Contagem` ou `Soma de Price`
+### 🎟️ Análise de produtos adicionais como passes
+- **Campos:** `EA Play Season Pass`, `EA Play Season Pass Price`, `Minecraft Season Pass`, `Minecraft Season Pass Price`
+- **Ação:** Contar os "Sim" e somar os respectivos valores
