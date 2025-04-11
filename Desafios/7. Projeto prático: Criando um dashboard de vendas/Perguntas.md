@@ -99,7 +99,7 @@ Este painel responde perguntas estratégicas utilizando os nomes reais das colun
 - **Campos:** `Coupon Value`, `Total Value`
 - **Tabela Dinâmica:**
   - **Valores:** Soma de `Coupon Value`, Soma de `Total Value`
-  - **Resultado Final:** Fora da tabela, calcular percentual: `Soma_Coupon_Value / Soma_Total_Value`
+  - **Resultado Final:** Fora da tabela, calcular percentual: `Coupon_Value / Total_Value`
 
 ### 💡 Qual a diferença de receita entre usuários que usaram e não usaram cupom?
 - **Campo:** `Coupon Value`
