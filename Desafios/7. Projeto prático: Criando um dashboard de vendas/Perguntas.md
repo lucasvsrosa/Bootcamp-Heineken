@@ -54,7 +54,7 @@ Este painel responde perguntas estratégicas utilizando os nomes reais das colun
 - **Campos:** `Start Date`, `Subscription Price`
 - **Tabela Dinâmica:**
   - **Linhas:** `Start Date` (agrupado por mês/ano)
-  - **Valores:** Soma de `Subscription Price` ou contagem de `Subscriber ID`
+  - **Valores:** Soma de `Subscription Price`
 
 ---
 
