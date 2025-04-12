@@ -11,109 +11,129 @@ Este painel responde perguntas estratégicas utilizando os nomes reais das colun
 - **Campo:** `Start Date`
 - **Tabela Dinâmica:**
   - **Linhas:** `Start Date` (agrupado por mês/ano)
-  - **Valores:** Contagem de `Subscriber ID`
-
-### 💰 Qual o faturamento total considerando todos os produtos?
-- **Campo:** `Total Value`
-- **Tabela Dinâmica:**
   - **Valores:** Soma de `Total Value`
+- **Gráfico:** Linha
+- **Aba:** Visão Geral
+
+### 💰 Qual o faturamento total?
+- **Campo:** `Total Value`
+- **Fórmula:** `=SOMA(Total Value)`
+- **Visual:** Cartão
+- **Aba:** Visão Geral
+
+### 👥 Quantos assinantes únicos existem?
+- **Campo:** `Subscriber ID`
+- **Fórmula:** `=NÚM.UNIQUE(Subscriber ID)`
+- **Visual:** Cartão
+- **Aba:** Visão Geral
 
 ### 🧍‍♂️ Qual o ticket médio por assinante?
-- **Campo:** `Total Value`
-- **Tabela Dinâmica:**
-  - **Valores:** Soma de `Total Value`
-  - **Linhas:** `Subscriber ID`
-  - **Resultado Final:** Criar campo calculado fora da Tabela Dinâmica com fórmula: `=Soma_Total / Qtde_Assinantes_Unicos`
+- **Campo:** `Total Value` / `Subscriber ID`
+- **Fórmula:** `=SOMA(Total Value) / NÚM.UNIQUE(Subscriber ID)`
+- **Visual:** Cartão com forma personalizada
+- **Aba:** Visão Geral
 
----
-
-## 📊 2. Performance Comercial  
-**Análise dos planos, tipos de assinaturas e faturamento**
-
-### 🛍️ Quais planos são os mais vendidos?
-- **Campo:** `Plan`
-- **Tabela Dinâmica:**
-  - **Linhas:** `Plan`
-  - **Valores:** Contagem de `Subscriber ID`
-
-### 🗃️ Qual tipo de plano gera mais receita?
-- **Campos:** `Subscription Type`, `Subscription Price`
+### 🧾 Qual o faturamento por tipo de assinatura?
+- **Campos:** `Subscription Type`, `Total Value`
 - **Tabela Dinâmica:**
   - **Linhas:** `Subscription Type`
-  - **Valores:** Soma de `Subscription Price`
-
-### 🔁 Qual a taxa de renovação automática por plano?
-- **Campos:** `Auto Renewal`, `Plan`
-- **Tabela Dinâmica:**
-  - **Linhas:** `Plan`
-  - **Colunas:** `Auto Renewal`
-  - **Valores:** Contagem de `Subscriber ID`
-  - **Resultado Final:** Calcular % de "Sim" com fórmula fora da Tabela Dinâmica
-
-### 📈 Qual a tendência de vendas nos últimos meses?
-- **Campos:** `Start Date`, `Subscription Price`
-- **Tabela Dinâmica:**
-  - **Linhas:** `Start Date` (agrupado por mês/ano)
-  - **Valores:** Soma de `Subscription Price`
+  - **Valores:** Soma de `Total Value`
+- **Gráfico:** Pizza ou colunas empilhadas
+- **Aba:** Visão Geral
 
 ---
 
-## 🧑‍💼 3. Perfil dos Assinantes  
-**Quem são os clientes e como se comportam**
+## 📈 2. Performance Comercial  
+**Análise por plano de assinatura e comportamento de vendas adicionais**
 
-### 🧍‍♂️ Qual o ticket médio por assinante?
-- **Campo:** `Total Value`
+### 📊 Qual o faturamento por plano?
+- **Campos:** `Plan`, `Total Value`
 - **Tabela Dinâmica:**
-  - **Linhas:** `Subscriber ID`
+  - **Linhas:** `Plan`
   - **Valores:** Soma de `Total Value`
-  - **Resultado Final:** Média dos valores gerados por assinante
+- **Gráfico:** Colunas Clusterizadas
+- **Aba:** Performance Comercial
 
-### 📅 Qual a evolução das assinaturas ao longo do tempo?
-- **Campo:** `Start Date`
+### 🔁 % de renovação automática por plano?
+- **Campos:** `Plan`, `Auto Renewal`
+- **Cálculo:** % com "Sim" por total do plano
+- **Gráfico:** Barras ou linhas
+- **Aba:** Performance Comercial
+
+---
+
+## 👤 3. Perfil dos Assinantes  
+**Comportamento, tipo de plano e uso de passes**
+
+### 🔁 Quantos usuários têm renovação automática?
+- **Campo:** `Auto Renewal`
 - **Tabela Dinâmica:**
-  - **Linhas:** `Start Date` (agrupado por mês/ano)
+  - **Linhas:** `Auto Renewal`
   - **Valores:** Contagem de `Subscriber ID`
+- **Gráfico:** Barras
+- **Aba:** Perfil dos Assinantes
 
-### 🎮 Quais produtos adicionais são mais comprados (EA Play / Minecraft)?
+### 💳 Distribuição por tipo de assinatura (Mensal x Anual)
+- **Campo:** `Subscription Type`
+- **Tabela Dinâmica:**
+  - **Linhas:** `Subscription Type`
+  - **Valores:** Contagem de `Subscriber ID`
+- **Gráfico:** Pizza ou barras horizontais
+- **Aba:** Perfil dos Assinantes
+
+### 🎮 Quantos assinaram passes (EA / Minecraft)?
 - **Campos:** `EA Play Season Pass`, `Minecraft Season Pass`
-- **Tabela Dinâmica (1):**
-  - **Linhas:** `EA Play Season Pass`
-  - **Valores:** Contagem de `Subscriber ID`
-- **Tabela Dinâmica (2):**
-  - **Linhas:** `Minecraft Season Pass`
-  - **Valores:** Contagem de `Subscriber ID`
-
-### 🔁 Qual a taxa de renovação automática por plano?
-- **Campos:** `Auto Renewal`, `Plan`
-- **Tabela Dinâmica:**
-  - **Linhas:** `Plan`
-  - **Colunas:** `Auto Renewal`
-  - **Valores:** Contagem de `Subscriber ID`
+- **Filtro:** "Sim"
+- **Cálculo:** Contagem de `Subscriber ID`
+- **Gráfico:** Barras empilhadas
+- **Aba:** Perfil dos Assinantes
 
 ---
 
-## 🧾 4. Análise Descontos e Passes  
-**Impacto dos cupons e passes extras no faturamento**
+## 💸 4. Descontos e Impacto Financeiro  
+**Avaliação de uso de cupons, impacto no faturamento e comportamento dos usuários**
 
-### 🧾 Qual o impacto dos cupons de desconto no faturamento?
-- **Campos:** `Coupon Value`, `Total Value`
-- **Tabela Dinâmica:**
-  - **Valores:** Soma de `Coupon Value`, Soma de `Total Value`
-  - **Resultado Final:** Fora da tabela, calcular percentual: `Coupon_Value / Total_Value`
+### 🎟️ Receita de usuários com e sem cupom
+- **Campo:** `Coupon Value`
+- **Filtro:** 0 vs > 0
+- **Cálculo:** Soma de `Total Value`
+- **Gráfico:** Colunas agrupadas (lado a lado)
+- **Aba:** Descontos
 
-### 💡 Qual a diferença de receita entre usuários que usaram e não usaram cupom?
-- **Campo:** `Usa Cupom`, `Subscriber ID`, `Total Value`
-- **Tabela Dinâmica:**
-  - **Linhas:** `Subscriber ID`
-  - **Valores:** Soma de `Total Value`
-  - **Filtro:** `CUsa Cupom` igual a 0 (sem cupom) e maior que 0 (com cupom)
-  - **Comparação:** Separar os dois grupos e comparar receitas
+### 🧮 Ticket médio com e sem cupom
+- **Campos:** `Total Value`, `Subscriber ID`, `Coupon Value`
+- **Cálculo:** Soma de `Total Value` / Nº de assinantes com e sem cupom
+- **Gráfico:** Colunas lado a lado
+- **Aba:** Descontos
 
-### 🎟️ Análise de produtos adicionais como passes
-- **Campos:** `EA Play Season Pass`, `EA Play Season Pass Price`, `Minecraft Season Pass`, `Minecraft Season Pass Price`
-- **Tabela Dinâmica 1:**
-  - **Linhas:** `EA Play Season Pass`
-  - **Valores:** Soma de `EA Play Season Pass Price`
-- **Tabela Dinâmica 2:**
-  - **Linhas:** `Minecraft Season Pass`
-  - **Valores:** Soma de `Minecraft Season Pass Price`
+### 💸 Valor total aplicado em cupons
+- **Campo:** `Coupon Value`
+- **Fórmula:** `=SOMA(Coupon Value)`
+- **Gráfico:** Cartão ou coluna simples
+- **Aba:** Descontos
+
+### 📉 O uso de cupom compromete o faturamento?
+- **Cálculo:** % de desconto médio = `SOMA(Coupon Value)` / `SOMA(Valor Bruto)`
+- **Visual:** Indicador ou gráfico de colunas
+- **Aba:** Descontos
+
+---
+
+## 🧠 Tabela de Métricas, Cálculos e Visualizações
+
+| 🔎 Pergunta | 🧮 Cálculo | 📊 Gráfico | 📁 Aba |
+|------------|-----------|------------|--------|
+| 🧍‍♂️ Qual o ticket médio por assinante? | Soma de `Total Value` / Nº únicos de `Subscriber ID` | Cartão com forma ou borda | Visão Geral |
+| 💰 Qual o faturamento total? | Soma de `Total Value` | Cartão | Visão Geral |
+| 👥 Quantos assinantes únicos existem? | Contagem única de `Subscriber ID` | Cartão | Visão Geral |
+| 🧾 Qual o faturamento por tipo de assinatura? | Tabela dinâmica com `Subscription Type` e `Total Value` | Pizza ou colunas empilhadas | Visão Geral |
+| 📊 Qual o faturamento por plano? | `Plan` nas linhas, `Total Value` nos valores | Colunas clusterizadas | Performance Comercial |
+| 🔁 Quantos usuários têm renovação automática? | `Auto Renewal` nas linhas + contagem de `Subscriber ID` | Barras | Perfil dos Assinantes |
+| 🎟️ Receita com e sem cupom? | Filtrar `Coupon Value` = 0 vs > 0 → soma de `Total Value` | Colunas agrupadas lado a lado | Descontos |
+| 💳 Distribuição por tipo de assinatura? | `Subscription Type` nas linhas + contagem de `Subscriber ID` | Pizza ou barras horizontais | Perfil dos Assinantes |
+| 🎮 Quantos assinaram passes? | Filtro "Sim" em `EA Play` e `Minecraft` → contagem | Barras empilhadas | Perfil dos Assinantes |
+| 🧮 Ticket médio com e sem cupom? | Soma de `Total Value` / nº de assinantes com ou sem cupom | Colunas lado a lado | Descontos |
+| 📈 Evolução mensal do faturamento? | Agrupar `Start Date` por Ano-Mês + soma `Total Value` | Linhas | Visão Geral |
+| 💸 Valor total aplicado em cupons? | Soma de `Coupon Value` | Cartão ou colunas | Descontos |
+| 📉 Uso de cupom compromete o faturamento? | % de desconto médio: soma `Coupon Value` / soma `Valor Bruto` | Indicador ou colunas | Descontos |
+| 🔁 % de renovação automática por plano? | Auto Renewal = Sim / total por `Plan` | Barras ou linhas | Perfil dos Assinantes |
