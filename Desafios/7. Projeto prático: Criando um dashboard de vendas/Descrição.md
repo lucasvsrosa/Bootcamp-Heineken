@@ -18,83 +18,89 @@ Com base na base de dados disponibilizada, é possível analisar:
 - 🔍 **Análise por tipo e valor de plano**
 
 ---
-## 🗂️ Abas do Arquivo Excel
+
+## 🗂️ Estrutura do Arquivo Excel
 
 ### 📁 Aba: `Assets`
-Esta aba reúne os elementos visuais utilizados no dashboard, como:
+Contém os elementos visuais utilizados no dashboard, como:
 
-- Ícones (ex: calendário, carrinho, dinheiro, seta, etc.)
-- Cores e estilos para padronização visual
-- Legendas ou imagens auxiliares
+- Ícones de apoio visual
+- Paleta de cores
+- Ilustrações e imagens
+
+---
 
 ### 📊 Aba: `Dashboard`
+Estruturado em **4 blocos estratégicos** com base nas perguntas-chave da diretoria:
 
-O dashboard foi estruturado em **múltiplas abas**, cada uma com um foco estratégico:
+---
 
-#### 1. **📌 Visão Geral**
-- Receita total
-- Quantidade de assinantes
-- Ticket médio
-- Receita por tipo de assinatura
-- Filtros: Start Date, Auto Renewal, Plan, Subscription Type
+#### 1. 📌 Visão Geral  
+🔍 **Objetivo:** Apresentar os indicadores principais do negócio.
 
-#### 2. **📈 Performance Comercial**
-- Receita por plano
-- Análise do uso de cupons
-- Participação de Season Pass (EA e Minecraft)
-- Receita com/sem desconto
+- 🔢 Receita total (`Total Value`)
+- 👥 Quantidade de assinantes únicos (`Subscriber ID`)
+- 💸 Ticket médio (`Total Value` / assinantes)
+- 📦 Receita por tipo de assinatura (`Subscription Type`)
 
-#### 3. **👤 Perfil dos Assinantes**
-- Comportamento de renovação automática
-- Distribuição dos planos
-- Adesão a benefícios extras (Season Pass)
-- Comparativo entre assinaturas mensais e anuais
+---
 
-#### 4. **💸 Descontos e Impacto Financeiro**
-- Quantidade de cupons utilizados
-- Comparativo de receita com e sem cupons
-- Avaliação se os cupons estão reduzindo excessivamente a margem de lucro
+#### 2. 📈 Performance Comercial  
+🔍 **Objetivo:** Avaliar os resultados financeiros e os planos mais vendidos.
 
-#### OBS: **🔎 Filtros Interativos**
+- 📊 Receita total por `Plan`
+- 📈 Evolução das vendas ao longo do tempo (`Start Date` agrupado por mês)
+- 🧾 Impacto dos cupons de desconto (`Coupon Value`)
+- 🛒 Produtos adicionais mais vendidos: `EA Play Season Pass` e `Minecraft Season Pass`
+- 🔁 Taxa de renovação automática por plano (`Auto Renewal` + `Plan`)
 
-Para uma análise personalizada, o dashboard permite aplicar os seguintes **filtros dinâmicos**:
+---
 
-- 📅 Start Date  
-- 🔁 Auto Renewal  
-- 📦 Plan  
-- 📂 Subscription Type
+#### 3. 👤 Perfil dos Assinantes  
+🔍 **Objetivo:** Entender o comportamento e preferências dos clientes.
 
-### 🏦 Aba: `Bases`
-Esta é a aba principal com os dados brutos de assinaturas, que foram utilizados para construir o dashboard.
+- ✅ Distribuição de `Auto Renewal` (Sim/Não)
+- 🗂️ Participação por `Subscription Type` (Mensal, Anual…)
+- 🧩 Uso de passes adicionais: `EA Play Season Pass`, `Minecraft Season Pass`
+- 💡 Comparação entre planos com e sem benefício extra
 
-#### 🗂️ Dicionário de Dados
+---
 
-| Coluna                       | Descrição                                                                 |
-|-----------------------------|---------------------------------------------------------------------------|
-| `Subscriber ID`             | Identificador único de cada assinante                                    |
-| `Name`                      | Nome do assinante                                                        |
-| `Plan`                      | Plano de assinatura adquirido (Ex: Gold, Ultimate, etc.)                 |
-| `Start Date`                | Data de início da assinatura                                             |
-| `Auto Renewal`              | Indica se a renovação automática está ativada (Sim ou Não)               |
-| `Subscription Price`        | Valor pago pela assinatura principal                                     |
-| `Subscription Type`        | Tipo da assinatura (Ex: Mensal, Anual, etc.)                             |
-| `EA Play Season Pass`       | Indica se o assinante comprou o passe de temporada do EA Play (Sim ou Não) |
-| `EA Play Season Pass Price` | Valor pago pelo passe de temporada do EA Play                            |
-| `Minecraft Season Pass`     | Indica se o assinante comprou o passe de temporada do Minecraft (Sim ou Não) |
-| `Minecraft Season Pass Price` | Valor pago pelo passe de temporada do Minecraft                        |
-| `Coupon Value`              | Valor de desconto aplicado por cupom                                     |
-| `Total Value`               | Valor total gasto pelo assinante após desconto (assinatura + passes)     |
+#### 4. 💸 Descontos e Impacto Financeiro  
+🔍 **Objetivo:** Mensurar o efeito dos cupons na receita total.
 
+- 📉 Receita com e sem cupom (`Coupon Value`)
+- 🔍 Média de desconto aplicado por assinatura
+- 📈 Comparação de receita bruta (`Subscription Price` + `Season Pass Price`) vs receita final (`Total Value`)
+- 💰 Análise do % de assinantes que usaram cupons
 
-### 🧮 Aba: Cálculos
-Esta aba concentra todas as colunas auxiliares e fórmulas criadas para análise e visualização no dashboard.
+---
 
-#### 📌 Principais colunas calculadas:
+## 📎 Filtros Interativos no Dashboard
 
-- `Ano-Mês:` usada para agrupar assinaturas por mês (extraída do Start Date)
-- `Valor Bruto:` soma de Subscription Price + EA Play + Minecraft
-- `Ticket Médio:` cálculo do valor médio por assinante
-- `Com Cupom / Sem Cupom:` para comparar o impacto do uso de cupons no faturamento
-- `Faturamento Total:` total pago sem descontos
-- `Faturamento Real:` total pago com descontos aplicados
-- `% Renovação:` percentual de renovação automática por plano ou tipo
+- 📅 `Start Date`
+- 🔁 `Auto Renewal`
+- 📦 `Plan`
+- 🗂️ `Subscription Type`
+
+---
+
+## 📊 Aba: `Bases` (Base de Dados Bruta)
+
+### 🗂️ Dicionário de Dados
+
+| Coluna                         | Descrição                                                                 |
+|--------------------------------|---------------------------------------------------------------------------|
+| `Subscriber ID`               | Identificador único de cada assinante                                    |
+| `Name`                        | Nome do assinante                                                        |
+| `Plan`                        | Plano de assinatura adquirido (Ex: Gold, Ultimate, etc.)                 |
+| `Start Date`                  | Data de início da assinatura                                             |
+| `Auto Renewal`                | Indica se a renovação automática está ativada (Sim ou Não)               |
+| `Subscription Price`          | Valor pago pela assinatura principal                                     |
+| `Subscription Type`           | Tipo da assinatura (Ex: Mensal, Anual, etc.)                             |
+| `EA Play Season Pass`         | Indica se o assinante comprou o passe EA Play (Sim ou Não)               |
+| `EA Play Season Pass Price`   | Valor pago pelo EA Play                                                  |
+| `Minecraft Season Pass`       | Indica se o assinante comprou o passe Minecraft (Sim ou Não)             |
+| `Minecraft Season Pass Price` | Valor pago pelo Minecraft                                                |
+| `Coupon Value`                | Valor de desconto aplicado                                               |
+| `Total Value`                 | Valor total pago após descontos                                          |
